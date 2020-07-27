@@ -1,7 +1,7 @@
-import chooseUser from './src/components/chooseUser'
+import main from './src/components/chooseUser'
 
 const install = Vue => {
-  Vue.component(chooseUser.name, chooseUser)
+  Vue.component(main.name, main)
 }
 
 export default install;
