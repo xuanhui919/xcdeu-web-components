@@ -2,7 +2,7 @@
   "name": "xcedu-web-component",
   "main": "./lib/xcedu-component.js",
   "description": "A Vue.js project",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "17730004990 <541951523@qq.com>",
   "license": "MIT",
   "private": false,
