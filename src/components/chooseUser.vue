@@ -124,6 +124,7 @@
 import tree from 'vue-giant-tree'
 import { getChooseUserDataByParams, gettSearchListByValue } from '@/api/index'
 export default {
+  name: 'chooseUser',
   components: { tree },
   props: {
     allowWrite: {
