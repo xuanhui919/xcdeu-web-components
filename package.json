@@ -11,7 +11,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.5.11"
+    "@xcedu/web-share": "^1.0.12",
+    "vue": "^2.5.11",
+    "vue-giant-tree": "^0.1.2"
   },
   "browserslist": [
     "> 1%",
