@@ -1,10 +1,7 @@
-import main from './src/components/chooseUser'
-import _Vue from 'vue'
+import chooesUser from './src/components/chooseUser'
 
-main.install = Vue => {
-if (!Vue) {
-window.Vue = Vue = _Vue
+const install = Vue => {
+  Vue.component(chooesUser.name, chooesUser)
 }
-Vue.component(main.name, main)
-}
-export default main;
+
+export default install;
