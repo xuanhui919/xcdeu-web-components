@@ -122,7 +122,6 @@
 </template>
 <script>
 import tree from 'vue-giant-tree'
-import { getChooseUserDataByParams, gettSearchListByValue } from '@/api/index'
 export default {
   name: 'chooseUser',
   components: { tree },
@@ -142,6 +141,14 @@ export default {
       default: function () {
         return []
       }
+    },
+    getUser: {
+      type: Function,
+      required: true
+    },
+    getSearchList: {
+      type: Function,
+      required: true
     }
   },
   data () {
@@ -288,7 +295,7 @@ export default {
         const params = {
           type: cmp
         }
-        getChooseUserDataByParams(params).then(res => {
+        this.getUser(params).then(res => {
           this[cmp + 'Nodes'] = res
           this[cmp + 'SearchNodes'] = JSON.parse(JSON.stringify(res))
         })
@@ -365,7 +372,7 @@ export default {
     // 返回autocomplete 的结果集
     querySearchAsync (queryString, cb) {
       let inputSearchList
-      gettSearchListByValue({ searchName: queryString }).then(res => {
+      this.getSearchList({ searchName: queryString }).then(res => {
         inputSearchList = res
         const results = queryString ? inputSearchList.filter(this.createStateFilter(queryString)) : inputSearchList
         cb(results)
