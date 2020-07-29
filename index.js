@@ -1,7 +1,11 @@
 import chooesUser from './src/components/chooseUser'
 
-const install = Vue => {
+const XcComponents = {}
+XcComponents.install = Vue => {
   Vue.component(chooesUser.name, chooesUser)
 }
+if (typeof Vue !== 'undefined') {
+  Vue.use(XcComponents)
+}
 
-export default install;
+export default XcComponents;
