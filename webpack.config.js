@@ -15,13 +15,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -31,8 +24,15 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.scss$/,
-        loader: 'scss-loader',
+        loader: 'sass-loader',
         options: {
           loaders: {
           }
