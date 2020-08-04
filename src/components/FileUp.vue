@@ -190,6 +190,17 @@ export default {
     })
   },
   methods: {
+    getClient () {
+      if (!this.client) {
+        this.client = new OSS({
+          region: 'oss-cn-shenzhen',
+          accessKeyId: 'LTAI4G2nbEWcDi9djnDY8tvJ',
+          accessKeySecret: 'ZZN02tVv7BpJEhc5bWa2NlNIdL6Vvp',
+          bucket: 'gtyzfile'
+        })
+      }
+      return this.client
+    },
     delFile (index) {
       this.$confirm('是否确认删除该' + (this.uploadType === 'image' ? '图片？' : '附件？'), '', {
         confirmButtonText: '确定',
@@ -219,14 +230,6 @@ export default {
       if (!PATH) {
         PATH = this.domainId + '/' + (this.dir || 'anonymous') + '/'
       }
-      if (!this.client) {
-        this.client = new OSS({
-          region: 'oss-cn-shenzhen',
-          accessKeyId: 'LTAI4G2nbEWcDi9djnDY8tvJ',
-          accessKeySecret: 'ZZN02tVv7BpJEhc5bWa2NlNIdL6Vvp',
-          bucket: 'gtyzfile'
-        })
-      }
       const id = uuidv4().replace(/-/g, '')
       const rawFile = http.file
       const file = {
@@ -239,7 +242,7 @@ export default {
       }
       this.fileList.push(file)
       const fileName = id + rawFile.name.substring(rawFile.name.lastIndexOf('.'))
-      return this.client.multipartUpload(PATH + fileName, rawFile, {
+      this.getClient().multipartUpload(PATH + fileName, rawFile, {
         progress: p => {
           file.progress = p * 100
         }
@@ -299,7 +302,16 @@ export default {
       this.$refs.imageBox[index].clickHandler()
     },
     download (file) {
-      downloadAttachment(file.url, file.displayName)
+      if (file.url.indexOf('blob:') === 0) {
+        downloadAttachment(file.url, file.displayName)
+      } else {
+        const result = this.getClient().signatureUrl(file.url.replace(/.*\.com\//, ''), {
+          response: {
+            'content-disposition': 'attachment; filename="' + file.displayName + '"'
+          }
+        })
+        window.location = result
+      }
     }
   }
 }
