@@ -257,7 +257,8 @@ export default {
         displayName: file.displayName,
         fileSize: file.fileSize,
         id: file.id,
-        relativePath: PATH
+        relativePath: PATH,
+        storageLocation: 'ALIYUN'
       }).then(res2 => {
         file.status = 'success'
         file.progress = -1
