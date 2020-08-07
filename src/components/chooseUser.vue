@@ -401,6 +401,9 @@ export default {
     },
     // 打开选人模态框
     chooseUser () {
+      this.orgUserSearchValue = ''
+      this.selectedSearchValue = ''
+      this.handleTreeSelect({ value: '' }, 'orgUser')
       this.dialogVisible = true
     },
     // ztree checkbox 选中
