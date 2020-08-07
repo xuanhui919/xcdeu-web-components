@@ -390,6 +390,7 @@ export default {
     // tag 删除
     handleClose (tag) {
       this.selectedArr.splice(this.dynamicTags.indexOf(tag), 1)
+      this.$emit('input', this.selectedArr)
     },
     // 搜索显示输入框
     showInput () {
