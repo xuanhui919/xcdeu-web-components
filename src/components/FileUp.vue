@@ -313,6 +313,15 @@ export default {
         })
         window.location = result
       }
+    },
+    // 是否还有未完成的上传（提供外部使用）
+    validateFinished () {
+      for (var i = 0; i < this.fileList.length; i++) {
+        if (this.fileList[i].progress !== -1) {
+          return false
+        }
+      }
+      return true
     }
   }
 }
