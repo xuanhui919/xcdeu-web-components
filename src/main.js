@@ -1,7 +1,7 @@
-import Vue from 'vue'
+import XcComponents from '../index'
 import App from './App.vue'
 
-new Vue({
+new window.Vue({
   el: '#app',
   render: h => h(App)
 })

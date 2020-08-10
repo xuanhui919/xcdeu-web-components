@@ -26,7 +26,7 @@ const XcComponents = {
 //暴露XcComponents
 window.XcComponents = XcComponents
 
-if (typeof Vue !== 'undefined') {
+if ('Vue' in window) {
   Vue.use(XcComponents)
 }
 

@@ -9,7 +9,7 @@ export function getChooseUserDataByParams (params) {
   return axios.get('/api-base/rangeScopes', { params })
 }
 // 选人输入
-export function gettSearchListByValue (params) {
+export function getSearchListByValue (params) {
   return axios.get('/api-base/rangeScopes?type=search', { params })
 }
 
