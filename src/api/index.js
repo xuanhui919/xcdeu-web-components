@@ -21,3 +21,7 @@ export function uploadResource (data) {
 export function loadDetailBatchByIds (params) {
   return axios.get('/api-base/attachments/infoList', { params })
 }
+// 获取密钥信息
+export function getClient () {
+  return axios.get('/api-base/attachments/infoList')
+}

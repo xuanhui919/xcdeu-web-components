@@ -180,6 +180,7 @@ export default {
     this.isShowList = this.showList
     this.isDisabled = this.disabled
     this.fileDir = this.dir
+
     this.fileAccept = (!this.accept && this.uploadType === 'image') ? 'image/*' : this.accept
   },
   beforeDestroy () {
